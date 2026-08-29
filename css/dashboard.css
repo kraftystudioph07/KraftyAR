@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@theme {
+    --color-brand: #DB4A2B;
+    --color-ink: #1F1F1F;
+    --color-paper: #FAFAF9;
+    --color-success: #16A34A;
+    --color-error: #DC2626;
+
+    --shadow-soft: 0 20px 60px rgba(31, 31, 31, 0.08);
+    --shadow-card: 0 8px 30px rgba(31, 31, 31, 0.05);
+}
+html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #FAFAF9;
+            color: #1F1F1F;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #FAFAF9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d6d3d1;
+            border-radius: 999px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a29e;
+        }
+
+        /* Accordion animation */
+        .accordion-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease;
+        }
+
+        .accordion-content.open {
+            grid-template-rows: 1fr;
+        }
+
+        .accordion-inner {
+            overflow: hidden;
+        }
+
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .chevron.rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Upload progress */
+        .progress-bar {
+            transition: width 0.2s ease;
+        }
+
+        /* Dropzone */
+        .dropzone {
+            transition:
+                border-color 0.2s ease,
+                background-color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .dropzone.drag-over {
+            border-color: #DB4A2B;
+            background: rgba(219, 74, 43, 0.05);
+            transform: scale(1.01);
+        }
+
+        /* Modal */
+        .modal-backdrop {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .modal-backdrop.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-panel {
+            transform: translateY(10px) scale(0.98);
+            transition: transform 0.2s ease;
+        }
+
+        .modal-backdrop.show .modal-panel {
+            transform: translateY(0) scale(1);
+        }
+
+        /* Toast */
+        #toastContainer {
+            pointer-events: none;
+        }
+
+        .toast {
+            animation: toastIn 0.25s ease forwards;
+        }
+
+        .toast.hide {
+            animation: toastOut 0.25s ease forwards;
+        }
+
+        @keyframes toastIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px) translateX(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) translateX(0);
+            }
+        }
+
+        @keyframes toastOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+        }
+
+        /* Spinner */
+        .spinner {
+            animation: spin 0.9s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Button lift */
+        .btn-lift {
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .btn-lift:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Video */
+        video {
+            display: block;
+        }
+
+        /* Prevent accidental horizontal overflow */
+        body {
+            overflow-x: hidden;
+        }

@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Capture Memories | Memories</title>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="./css/dashboard.css" />
+  </head>
+
+  <body class="min-h-screen">
+    <!-- ============================================================
+         HEADER
+    ============================================================ -->
+
+    <header
+      class="sticky top-0 z-40 border-b border-stone-200 bg-white/90 backdrop-blur-xl"
+    >
+      <div
+        class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8"
+      >
+        <!-- Brand -->
+        <a
+          href="index.html"
+          class="flex items-center gap-2.5 font-semibold text-ink"
+          aria-label="Memories Home"
+        >
+          <span
+            class="flex h-9 w-9 items-center justify-center rounded-xl bg-brand text-white shadow-sm"
+          >
+            <i data-lucide="camera" class="h-5 w-5"></i>
+          </span>
+
+          <span class="text-lg tracking-tight"> Memories </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav
+          class="hidden items-center gap-1 sm:flex"
+          aria-label="Main navigation"
+        >
+          <a
+            href="index.html"
+            class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition hover:bg-stone-100 hover:text-ink"
+          >
+            <i data-lucide="house" class="h-4 w-4"></i>
+            Home
+          </a>
+
+          <a
+            href="KraftyAR.html"
+            class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition hover:bg-stone-100 hover:text-ink"
+          >
+            <i data-lucide="scan-line" class="h-4 w-4"></i>
+            Open Memories
+          </a>
+
+          <button
+            type="button"
+            onclick="logout()"
+            class="ml-1 flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition hover:bg-red-50 hover:text-error"
+          >
+            <i data-lucide="log-out" class="h-4 w-4"></i>
+            Logout
+          </button>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobileMenuButton"
+          type="button"
+          class="flex h-10 w-10 items-center justify-center rounded-lg text-stone-600 hover:bg-stone-100 sm:hidden"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+        >
+          <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div
+        id="mobileMenu"
+        class="hidden border-t border-stone-200 bg-white px-4 py-3 sm:hidden"
+      >
+        <div class="space-y-1">
+          <a
+            href="index.html"
+            class="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium text-stone-700 hover:bg-stone-100"
+          >
+            <i data-lucide="house" class="h-4 w-4"></i>
+            Home
+          </a>
+
+          <a
+            href="KraftyAR.html"
+            class="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium text-stone-700 hover:bg-stone-100"
+          >
+            <i data-lucide="scan-line" class="h-4 w-4"></i>
+            Open Memories
+          </a>
+
+          <button
+            type="button"
+            onclick="logout()"
+            class="flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-sm font-medium text-error hover:bg-red-50"
+          >
+            <i data-lucide="log-out" class="h-4 w-4"></i>
+            Logout
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         MAIN
+    ============================================================ -->
+
+    <main class="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      <!-- Hero / Introduction -->
+      <section class="mb-8">
+        <div
+          class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"
+        >
+          <div>
+            <div
+              class="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1.5 text-xs font-semibold text-brand"
+            >
+              <span class="h-1.5 w-1.5 rounded-full bg-brand"></span>
+              10 Chapters
+            </div>
+
+            <h1 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+              Capture Memories
+            </h1>
+
+            <p
+              class="mt-3 max-w-2xl text-base leading-7 text-stone-500 sm:text-lg"
+            >
+              Upload and manage the videos for each chapter of your memory
+              experience.
+            </p>
+          </div>
+
+          <a
+            href="KraftyAR.html"
+            class="btn-lift inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-4 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#c94025] focus:outline-none focus:ring-4 focus:ring-orange-100"
+          >
+            <i data-lucide="scan-line" class="h-4 w-4"></i>
+            Open Memories
+          </a>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             PROGRESS SUMMARY
+        ========================================================= -->
+
+      <section
+        class="mb-8 rounded-2xl border border-stone-200 bg-white p-5 shadow-card sm:p-6"
+        aria-labelledby="progressHeading"
+      >
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="sparkles" class="h-4 w-4 text-brand"></i>
+
+              <h2 id="progressHeading" class="text-sm font-semibold text-ink">
+                Memory Progress
+              </h2>
+            </div>
+
+            <p id="progressText" class="mt-1.5 text-sm text-stone-500">
+              0 of 10 chapters have videos
+            </p>
+          </div>
+
+          <span id="progressPercentage" class="text-sm font-bold text-brand">
+            0%
+          </span>
+        </div>
+
+        <div
+          class="mt-4 h-2 overflow-hidden rounded-full bg-stone-100"
+          role="progressbar"
+          aria-label="Memory progress"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <div
+            id="overallProgress"
+            class="progress-bar h-full rounded-full bg-brand"
+            style="width: 0%"
+          ></div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             EMPTY STATE
+        ========================================================= -->
+
+      <section
+        id="emptyState"
+        class="mb-6 rounded-2xl border border-orange-100 bg-orange-50/60 p-5 sm:p-6"
+      >
+        <div class="flex items-start gap-4">
+          <div
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-brand shadow-sm"
+          >
+            <i data-lucide="heart" class="h-5 w-5"></i>
+          </div>
+
+          <div>
+            <h2 class="font-semibold text-ink">
+              Start capturing your memories
+            </h2>
+
+            <p class="mt-1 text-sm leading-6 text-stone-600">
+              Upload a video for each chapter to build your complete memory
+              experience.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             CHAPTERS
+        ======================================================== -->
+
+      <section
+        id="chaptersContainer"
+        class="space-y-3"
+        aria-label="Memory chapters"
+      >
+        <!-- Chapters generated by JavaScript -->
+      </section>
+
+      <!-- ========================================================
+             FOOTER CTA
+        ======================================================== -->
+
+      <section
+        class="mt-8 rounded-2xl border border-stone-200 bg-white p-5 shadow-card sm:p-6"
+      >
+        <div
+          class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <div>
+            <p class="font-semibold text-ink">
+              Ready to experience your memories?
+            </p>
+
+            <p class="mt-1 text-sm text-stone-500">
+              Open the AR experience to view your uploaded memories.
+            </p>
+          </div>
+
+          <a
+            href="KraftyAR.html"
+            class="btn-lift inline-flex items-center justify-center gap-2 rounded-xl border border-brand bg-white px-4 py-3 text-sm font-semibold text-brand transition hover:bg-orange-50 focus:outline-none focus:ring-4 focus:ring-orange-100"
+          >
+            <i data-lucide="scan-line" class="h-4 w-4"></i>
+            Experience Memories
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================================
+         DELETE CONFIRMATION MODAL
+    ============================================================ -->
+
+    <div
+      id="deleteModal"
+      class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="deleteModalTitle"
+      aria-describedby="deleteModalDescription"
+    >
+      <div
+        class="modal-panel w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl"
+      >
+        <div class="flex items-start gap-4">
+          <div
+            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-50 text-error"
+          >
+            <i data-lucide="trash-2" class="h-5 w-5"></i>
+          </div>
+
+          <div>
+            <h2 id="deleteModalTitle" class="text-lg font-bold text-ink">
+              Delete Chapter Video?
+            </h2>
+
+            <p
+              id="deleteModalDescription"
+              class="mt-2 text-sm leading-6 text-stone-500"
+            >
+              Are you sure you want to permanently delete this video? This
+              action cannot be undone.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"
+        >
+          <button
+            id="cancelDeleteButton"
+            type="button"
+            class="rounded-xl border border-stone-200 px-4 py-2.5 text-sm font-semibold text-stone-700 transition hover:bg-stone-50 focus:outline-none focus:ring-4 focus:ring-stone-100"
+          >
+            Cancel
+          </button>
+
+          <button
+            id="confirmDeleteButton"
+            type="button"
+            class="rounded-xl bg-error px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-100"
+          >
+            <span class="inline-flex items-center gap-2">
+              <i data-lucide="trash-2" class="h-4 w-4"></i>
+              Delete Video
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         TOAST CONTAINER
+    ============================================================ -->
+
+    <div
+      id="toastContainer"
+      class="fixed bottom-4 right-4 z-60 flex w-[calc(100%-2rem)] max-w-sm flex-col gap-2 sm:bottom-6 sm:right-6"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+
+    <!-- ============================================================
+         JAVASCRIPT
+    ============================================================ -->
+
+    <script src="./dashboard.js"></script>
+  </body>
+</html>

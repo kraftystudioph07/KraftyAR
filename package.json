@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
     "aframe": "^1.7.0",
-    "mind-ar": "^1.2.5"
+    "mind-ar": "^1.2.5",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "vite": "^6.4.3"
