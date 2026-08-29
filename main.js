@@ -1,4 +1,4 @@
-
+import './tailwind_theme/tailwind.css';
       // Initialize Lucide icons
       lucide.createIcons();
 

@@ -1,3 +1,4 @@
+import './tailwind_theme/tailwind.css';
 // ==================== MOBILE MENU ====================
       const menuButton = document.getElementById("menuButton");
       const mobileMenu = document.getElementById("mobileMenu");
