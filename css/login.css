@@ -1,4 +1,4 @@
-@import "/tailwind_theme/tailwind.css";
+@import "tailwindcss";
 
 @theme {
     --color-brand: #DB4A2B;
